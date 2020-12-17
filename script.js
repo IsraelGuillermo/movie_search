@@ -16,7 +16,8 @@ search.addEventListener("click", () => {
     for (let i = 0; i < 10; i++) {
       let div = $("<div>");
       $("<h1>").text(results.Search[i].Title).appendTo(div);
-      // $("<p>").text(results.Search[i].appendTo(div);
+      $("<p>").text(results.Search[i].Year).appendTo(div);
+      $('<img src="' + results.Search[i].Poster + '">').appendTo(div);
       div.appendTo("#movies");
     }
   });
