@@ -1,0 +1,25 @@
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  float: left;
+  margin: 0.5em;
+  max-height: 35rem;
+}
+
+img {
+  height: 20rem;
+}
+
+#movies {
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}

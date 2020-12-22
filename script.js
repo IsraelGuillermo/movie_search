@@ -2,31 +2,47 @@ const search = document.querySelector("#search");
 const movie = document.querySelector("#movie");
 
 $("#search").on("click", () => {
-  $("#movies").empty();
   let key = "34bbd0fa";
   let selectedMovie = movie.value.trim();
   let query =
     "http://www.omdbapi.com/?apikey=" + key + "&plot=short&s=" + selectedMovie;
   console.log(query);
 
-  $.ajax({
-    url: query,
-    method: "GET",
-  }).then(function (results) {
-    // console.log(results.Search[0].Title);
-    for (let i = 0; i < 10; i++) {
-      let div = $("<div>");
-      $("<h1>").text(results.Search[i].Title).appendTo(div);
-      $("<p>").text(results.Search[i].Year).appendTo(div);
-      $('<img src="' + results.Search[i].Poster + '">').appendTo(div);
-      $("<button>")
-        .text("See more")
-        .addClass("btn btn-info")
-        .attr("imdbID", results.Search[i].imdbID)
-        .appendTo(div);
-      div.appendTo("#movies");
-    }
-  });
+  if (selectedMovie == "") {
+    alert("You must enter a title!");
+    return;
+  } else {
+    $("#centered-search").removeClass("centered");
+    $("#movies").empty();
+
+    $.ajax({
+      url: query,
+      method: "GET",
+    }).then(function (results) {
+      // console.log(results.Search[0].Title);
+      for (let i = 0; i < 10; i++) {
+        let div = $("<div>").addClass("card").css("width", "18rem");
+        let bodyDiv = $("<div>").addClass("card-body");
+        let movieTitle = results.Search[i].Title;
+        if (movieTitle.length > 20) {
+          movieTitle = movieTitle.substring(0, 19).concat("...");
+        }
+
+        $("<h5>").addClass("card-title").text(movieTitle).appendTo(bodyDiv);
+        $("<p>").text(results.Search[i].Year).appendTo(bodyDiv);
+        $('<img src="' + results.Search[i].Poster + '">')
+          .addClass("card-img-top")
+          .appendTo(div);
+        $("<button>")
+          .text("See more")
+          .addClass("btn btn-info")
+          .attr("imdbID", results.Search[i].imdbID)
+          .appendTo(bodyDiv);
+        bodyDiv.appendTo(div);
+        div.appendTo("#movies");
+      }
+    });
+  }
 });
 
 $(document).on("click", ".btn-info", function () {
