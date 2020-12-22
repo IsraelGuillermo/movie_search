@@ -20,7 +20,7 @@ $("#search").on("click", () => {
       method: "GET",
     }).then(function (results) {
       // console.log(results.Search[0].Title);
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 12; i++) {
         let div = $("<div>").addClass("card").css("width", "18rem");
         let bodyDiv = $("<div>").addClass("card-body");
         let movieTitle = results.Search[i].Title;
