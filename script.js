@@ -5,7 +5,7 @@ $('#search').on('click', () => {
   let key = '34bbd0fa';
   let selectedMovie = movie.value.trim();
   let query =
-    'http://www.omdbapi.com/?apikey=' + key + '&plot=short&s=' + selectedMovie;
+    'https://www.omdbapi.com/?apikey=' + key + '&plot=short&s=' + selectedMovie;
   console.log(query);
 
   if (selectedMovie == '') {
@@ -49,7 +49,7 @@ $(document).on('click', '.btn-info', function () {
   let key = '34bbd0fa';
   let id = $(this).attr('imdbID');
   let infoQuery =
-    'http://www.omdbapi.com/?apikey=' + key + '&plot=long&i=' + id;
+    'https://www.omdbapi.com/?apikey=' + key + '&plot=long&i=' + id;
   console.log(infoQuery);
   $.ajax({
     url: infoQuery,
