@@ -17,7 +17,7 @@ $('#search').on('click', () => {
 
     $.ajax({
       url: query,
-      method: 'GET',
+      method: 'GET'
     }).then(function (results) {
       // console.log(results.Search[0].Title);
       for (let i = 0; i < 8; i++) {
@@ -53,7 +53,7 @@ $(document).on('click', '.btn-info', function () {
   console.log(infoQuery);
   $.ajax({
     url: infoQuery,
-    method: 'GET',
+    method: 'GET'
   }).then(function (results) {
     $('#movies').empty();
 
